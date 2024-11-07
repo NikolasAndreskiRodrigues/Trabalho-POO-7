@@ -6,21 +6,25 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
 @Entity
-public class User {
+public class Reserva {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nomecompleto;
-    private String email;
-    private String senha;
+    private Date dataCheckIn;
+    private Date dataCheckOut;
+    private int quantidadeHospedes;
+    private float valorTotal;
     private boolean active;
-    @OneToOne
-    private UserRole role;
+
+    @ManyToOne
+    private Hotel hotel;
 
 }
