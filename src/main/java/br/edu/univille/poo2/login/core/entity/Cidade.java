@@ -12,7 +12,13 @@ import lombok.ToString;
 @ToString
 @Entity
 public class Cidade {
-    private String nome;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    private String name;
+
     @ManyToOne
     private Estado estado;
+
 }

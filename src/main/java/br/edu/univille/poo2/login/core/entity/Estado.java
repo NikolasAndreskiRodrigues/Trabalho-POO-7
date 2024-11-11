@@ -1,7 +1,6 @@
 package br.edu.univille.poo2.login.core.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +12,12 @@ import lombok.ToString;
 @ToString
 @Entity
 public class Estado {
-    private String nome;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    private String name;
+
     @ManyToOne
     private Pais pais;
 
