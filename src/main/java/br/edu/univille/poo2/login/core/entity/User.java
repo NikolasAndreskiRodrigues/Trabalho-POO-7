@@ -16,9 +16,10 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nomecompleto;
+    private String username;
+    private String name;
+    private String password;
     private String email;
-    private String senha;
     private boolean active;
     @OneToOne
     private UserRole role;
