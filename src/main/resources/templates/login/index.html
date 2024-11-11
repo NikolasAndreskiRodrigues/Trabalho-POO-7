@@ -2,19 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tela de Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<h1>Tela de Login</h1>
-<p>Faça o seu login.</p>
-<form th:action="@{/login}" method="post" th:object="${user}">
-    <label for="nome">Usuario:</label>
-    <input type="text" name="username" id="username" placeholder="username" required>
-    <label for="senha">Senha:</label>
-    <input type="password" id="password" name="password" placeholder="password" required>
-    <button type="submit">Login</button>
-</form>
-<div th:if="${param.error}">Usuário ou senha incorretos</div>
+<div class="container">
+    <h2>Faça login na sua conta</h2>
+    <form>
+        <label for="nome">Usuario:</label>
+        <input type="text" name="username" id="username" placeholder="username" required>
+        <label for="senha">Senha:</label>
+        <input type="password" id="password" name="password" placeholder="password" required>
+        <button type="submit">Login</button>
+
+        <div class="links">
+            <a href="#">esqueci minha senha</a>
+            <a href="#">Criar uma conta</a>
+        </div>
+
+        <button type="submit">Entrar</button>
+    </form>
+    <div th:if="${param.error}">Usuário ou senha incorretos</div>
 </body>
 </html>
+
