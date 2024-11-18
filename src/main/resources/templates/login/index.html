@@ -7,23 +7,27 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<div class="container">
-    <h2>Faça login na sua conta</h2>
+<div class="background">
+    <div class="overlay"></div>
+    <h1 class="main-title">Sorriso Hotéis</h1>
+        <div class="login-container">
+        <h2>Faça login na sua conta</h2>
     <form>
         <label for="nome">Usuario:</label>
-        <input type="text" name="username" id="username" placeholder="username" required>
+        <input type="text" name="username" id="username" required>
         <label for="senha">Senha:</label>
-        <input type="password" id="password" name="password" placeholder="password" required>
-        <button type="submit">Login</button>
+        <input type="password" id="password" name="password" required>
 
         <div class="links">
             <a href="#">esqueci minha senha</a>
+            <br>
             <a href="#">Criar uma conta</a>
         </div>
-
-        <button type="submit">Entrar</button>
+        <button type="submit" class="login-button">Login</button>
     </form>
     <div th:if="${param.error}">Usuário ou senha incorretos</div>
+    </div>
+</div>
 </body>
 </html>
 
