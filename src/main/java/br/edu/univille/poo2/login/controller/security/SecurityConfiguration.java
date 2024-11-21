@@ -52,6 +52,7 @@ public class SecurityConfiguration {
              .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
                         authorizationManagerRequestMatcherRegistry
                                 .requestMatchers("/").permitAll()
+                                .requestMatchers("/register").permitAll()
                                 .requestMatchers("/login").permitAll()
                                 .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
