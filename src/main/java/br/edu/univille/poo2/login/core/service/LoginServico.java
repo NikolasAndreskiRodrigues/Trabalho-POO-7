@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class LoginServico implements UserDetailsService {
+    //bla bla
 
     @Autowired
     private UserRepository userRepository;
