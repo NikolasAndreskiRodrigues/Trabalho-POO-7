@@ -2,6 +2,7 @@ package br.edu.univille.poo2.login.core.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -9,13 +10,13 @@ import java.time.temporal.ChronoUnit;
 public class MinNoites {
 
     @Autowired
-    private LocalDate dataCheckIn;
+    private Date dataCheckIn;
     @Autowired
-    private LocalDate dataCheckOut;
+    private Date dataCheckOut;
     @Autowired
     private static final int MIN_NIGHTS = 1;
 
-    public MinNoites(LocalDate dataCheckIn, LocalDate dataCheckOut) {
+    public MinNoites(Date dataCheckIn, Date dataCheckOut) {
         this.dataCheckIn = dataCheckIn;
         this.dataCheckOut = dataCheckOut;
     }
