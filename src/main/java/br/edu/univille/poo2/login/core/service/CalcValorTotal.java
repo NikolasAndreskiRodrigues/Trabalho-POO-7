@@ -30,4 +30,18 @@ public class CalcValorTotal {
 
         return valorTotal;
     }
+
+    public List<Double> calcularValoresTotaisPorPeriodo(LocalDate dataCheckIn, LocalDate dataCheckOut) {
+        // Busca reservas no período
+        List<Reserva> reservas = reservaRepository.findByDataCheckInGreaterThanEqualAndDataCheckOutLessThanEqual(dataCheckIn, dataCheckOut);
+
+        // Calcula o valor total para cada reserva
+        return reservas.stream()
+                .map(reserva -> {
+                    long quantidadeDias = java.time.temporal.ChronoUnit.DAYS.between(
+                            reserva.getDataCheckIn(), reserva.getDataCheckOut());
+                    return quantidadeDias * reserva.getValorPorNoite() * reserva.getQuantidadePessoas();
+                })
+                .toList();
+    }
 }
