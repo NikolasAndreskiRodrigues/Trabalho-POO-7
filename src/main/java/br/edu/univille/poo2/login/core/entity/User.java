@@ -32,12 +32,5 @@ public class User {
 
     @OneToOne
     private UserRole role;
-<<<<<<< HEAD
-}
-=======
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Reserva> reservas;
 
 }
->>>>>>> parent of 128d794 (Revert ".")
