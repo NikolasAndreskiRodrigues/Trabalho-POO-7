@@ -6,6 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
+<div sec:authorize="isAuthenticated()">
 <section class="banner">
     <div class="banner__overlay"></div>
     <div class="banner__content">
@@ -16,9 +17,13 @@
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg" alt="Bandeira do Brasil" class="header__flag">
                     <span class="header__currency">BRL</span>
                 </div>
-                <div class="header__auth-buttons">
-                    <a class="button button--register" th:href="@{/register}">Cadastre-se</a>
-                    <a class="button button--login" th:href="@{/login}">Login</a>
+                <div class="perfil-container">
+                    <div class="perfil-imagem">
+                        <img src="/img/ImgUser.png" alt="Perfil" />
+                    </div>
+                    <div class="perfil-texto">
+                        <span>Perfil</span>
+                    </div>
                 </div>
             </div>
         </header>
