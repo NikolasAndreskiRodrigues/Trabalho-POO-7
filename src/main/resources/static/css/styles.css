@@ -173,7 +173,6 @@ input {
   background-color: #e57800;
 }
 
-/* Estilo Global */
 * {
   margin: 0;
   padding: 0;
@@ -187,7 +186,6 @@ body {
 }
 
 .header {
-  border-bottom: 1px solid #ddd;
   padding: 10px 20px;
 }
 
@@ -230,34 +228,36 @@ body {
 .button--register {
   background-color: white;
   color: #ff8c00;
+  text-decoration: none
 }
 
 .button--login {
   background-color: white;
   color: #ff8c00;
   border: 1px solid #ff8c00;
+  text-decoration: none
 }
 
 .banner {
-  position: relative; /* Necessário para o posicionamento do overlay */
-  background: url('/img/Imghome.png') no-repeat center/cover;
+  position: relative;
+  background: url('/img/ImgHomepage.png') no-repeat center/cover;
   color: white;
   text-align: center;
 }
 
 .banner__overlay {
-  position: absolute; /* Camada flutuante */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 140, 0, 0.7); /* Laranja semi-transparente */
-  z-index: 1; /* Certifique-se de que fique abaixo do conteúdo */
+  background-color: rgba(255, 140, 0, 0.7);
+  z-index: 1;
 }
 
 .banner__content {
-  position: relative; /* Para garantir que o conteúdo esteja acima do overlay */
-  z-index: 2; /* Colocado acima da camada transparente */
+  position: relative;
+  z-index: 2;
 }
 
 .banner__title {
@@ -296,7 +296,6 @@ body {
   font-size: 16px;
 }
 
-/* Seção de Ofertas */
 .offers {
   padding: 40px 20px;
   background: #f9f9f9;
