@@ -29,7 +29,7 @@ public class Reserva {
     @ManyToOne
     private Hotel hotel;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 

@@ -1,5 +1,5 @@
 package br.edu.univille.poo2.login.core.entity;
-import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,8 +32,4 @@ public class User {
 
     @OneToOne
     private UserRole role;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Reserva> reservas;
-
 }
