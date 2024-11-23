@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -19,8 +20,8 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
-    private Date dataCheckIn;
-    private Date dataCheckOut;
+    private LocalDate dataCheckIn;
+    private LocalDate dataCheckOut;
     private int quantidadeHospedes;
     private float valorTotal;
     private boolean active;

@@ -1,11 +1,11 @@
 package br.edu.univille.poo2.login.core.repository;
 
 import br.edu.univille.poo2.login.core.entity.Reserva;
-import br.edu.univille.poo2.login.core.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import java.time.LocalDate;
+import java.util.List;
 
 public interface ReservaRepository extends JpaRepository<Reserva, Long>{
-    ;
+    List<Reserva> findByCheckInAfterAndCheckOutBefore(LocalDate checkIn, LocalDate checkOut);
 }
