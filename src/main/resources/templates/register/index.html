@@ -39,8 +39,8 @@
                 </div>
 
                 <button type="submit" class="form-button">Criar conta</button>
-                <div>
-                    <p style="color: red;">${error}</p> <!-- Mensagem de erro exibida aqui -->
+                <div th:if="${error}">
+                    <p style="color: red;" th:text="${error}"></p>
                 </div>
             </form>
         </div>

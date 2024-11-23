@@ -17,15 +17,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false) // Garante que o username seja único e não nulo
+    @Column(unique = true, nullable = false)
     private String username;
 
     private String name;
 
-    @Column(nullable = false) // Garante que a senha não seja nula
+    @Column(nullable = false)
     private String password;
 
-    @Column(unique = true, nullable = false) // Garante que o email seja único e não nulo
+    @Column(unique = true, nullable = false)
     private String email;
 
     private boolean active;

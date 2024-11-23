@@ -34,44 +34,40 @@ public class RegisterController {
                                  @RequestParam("password") String password,
                                  @RequestParam("confirmPassword") String confirmPassword,
                                  @RequestParam("email") String email) {
+        ModelAndView modelAndView = new ModelAndView("register/index"); // Cria uma única instância de ModelAndView
 
-        // Verifica se as senhas coincidem
+        // Valida se as senhas coincidem
         if (!password.equals(confirmPassword)) {
-            ModelAndView modelAndView = new ModelAndView("register/index");
             modelAndView.addObject("error", "As senhas não coincidem!");
             return modelAndView;
         }
 
-        // Verifica se o username já está em uso
+        // Verifica se o nome de usuário já está em uso
         if (userRepository.findByUsernameAndActiveTrue(username).isPresent()) {
-            ModelAndView modelAndView = new ModelAndView("register/index");
             modelAndView.addObject("error", "O nome de usuário já está em uso!");
             return modelAndView;
         }
 
         // Verifica se o email já está em uso
         if (userRepository.findAll().stream().anyMatch(user -> user.getEmail().equals(email))) {
-            ModelAndView modelAndView = new ModelAndView("register/index");
             modelAndView.addObject("error", "O email já está em uso!");
             return modelAndView;
         }
 
-        // Busca o papel ROLE_USER (role_id = 1)
+        // Criação do novo usuário
         UserRole roleUser = userRoleRepository.findById(2L)
                 .orElseThrow(() -> new IllegalArgumentException("Role não encontrado!"));
 
-        // Cria o usuário
         User newUser = new User();
         newUser.setUsername(username);
         newUser.setName(name);
         newUser.setPassword(passwordEncoder.encode(password));
         newUser.setEmail(email);
         newUser.setActive(true);
-        newUser.setRole(roleUser);  // Associação com o role de id = 1
+        newUser.setRole(roleUser);
 
         userRepository.save(newUser);
 
-        // Redireciona para a página de login
-        return new ModelAndView("redirect:/login");
+        return new ModelAndView("redirect:/login"); // Redireciona após sucesso
     }
 }

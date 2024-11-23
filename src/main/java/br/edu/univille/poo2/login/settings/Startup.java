@@ -35,7 +35,7 @@ public class Startup {
 
             if (roleAdmin.isPresent()) {
                 User admin = new User();
-                admin.setUsername("admin");
+                admin.setUsername("Admin");
                 admin.setActive(true);
                 admin.setName("Administrador de Sistema");
                 admin.setRole(roleAdmin.get());
