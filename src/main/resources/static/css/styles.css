@@ -200,11 +200,12 @@ body {
 .header__logo {
   font-size: 1.5rem;
   font-weight: bold;
+  white-space: nowrap;
 }
 
 .header__language {
   display: flex;
-  align-items: center;
+  margin-left: 65%;
 }
 
 .header__flag {
@@ -279,11 +280,12 @@ body {
 }
 
 .banner__input {
-  padding: 10px;
+  padding: 10px 20px;;
   font-size: 16px;
   border: none;
   border-radius: 4px;
   width: 220px;
+  margin: 0px;
 }
 
 .banner__button {
@@ -294,6 +296,7 @@ body {
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+  width: 220px;
 }
 
 .offers {
@@ -353,4 +356,56 @@ body {
 .banner__space {
   padding: 100px;
 }
+
+.perfil-container {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 20px;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+.perfil-imagem {
+  width: 40px;
+  height: 40px;
+  border: 2px solid white;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.perfil-imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.perfil-texto span {
+  font-weight: bold;
+}
+
+.botao-deslogar {
+  color: white;
+  border-radius: 5px;
+  padding: 5px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: 0.3s;
+  text-decoration: none
+}
+
+.btn-relatorio {
+    display: center;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
 

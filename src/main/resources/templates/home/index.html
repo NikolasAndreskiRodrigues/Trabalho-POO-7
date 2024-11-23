@@ -2,31 +2,64 @@
 <html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Tela inicial do Sistema</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<h1>Home</h1>
-<p>Área restrita para usuários logados. </p>
-<p>Bem vindo: <span sec:authentication="name"></span></p>
-
-<ol>
-    <li><a  th:href="@{/logout}">Deslogar</a></li>
-</ol>
 <div sec:authorize="isAuthenticated()">
-    Conteudo que somente é mostrado para usuários logados.
-</div>
+<section class="banner">
+    <div class="banner__overlay"></div>
+    <div class="banner__content">
+        <header class="header">
+            <div class="header__container">
+                <div class="header__logo">Sorriso Hotéis</div>
+                <div class="header__language">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg" alt="Bandeira do Brasil" class="header__flag">
+                    <span class="header__currency">BRL</span>
+                </div>
+                <div class="perfil-container">
+                    <div class="perfil-imagem">
+                        <img src="/img/ImgUser.png" alt="Perfil" />
+                    </div>
+                    <div class="perfil-texto">
+                        <span sec:authentication="name"></span>
+                    </div>
+                    <a class="botao-deslogar" th:href="@{/logout}">Deslogar</a>
+                </div>
+            </div>
+        </header>
+        <div  sec:authorize="hasRole('ROLE_ADMIN')">
+            <a th:href="@{/a/admin}" class="btn-relatorio">Admin Painel</a>
+        </div>
+        <div class="banner__space">
+            <h1 class="banner__title">Encontre sua próxima estadia com alegria!</h1>
+            <p class="banner__subtitle">Ofertas econômicas ou luxuosas no precinho para deixar você sorrindo.</p>
+            <div class="banner__search-bar">
+                <input type="text" placeholder="Para onde você vai?" class="banner__input">
+                <input type="text" placeholder="Data de check-in - Data de Check-out" class="banner__input">
+                <input type="text" placeholder="2 adultos · 0 criança · 1 cômodo" class="banner__input">
+                <button class="banner__button">PESQUISAR</button>
+            </div>
+        </div>
+    </div>
+</section>
 
-<div  sec:authorize="hasRole('ROLE_ADMIN')">
-    <p>usuário administrador está logado</p>
-</div>
-<div  sec:authorize="hasRole('ROLE_MANAGER')">
-    <p>usuário gerente está logado</p>
-</div>
-
-<div  sec:authorize="hasRole('ROLE_USER')">
-    <p>usuário comum está logado</p>
-</div>
-
+<section class="offers">
+    <h2 class="offers__title">Ofertas</h2>
+    <p class="offers__subtitle">Promoções e Ofertas especiais para você</p>
+    <div class="offers__card">
+        <img src="https://via.placeholder.com/150" alt="Viagem" class="offers__image">
+        <div class="offers__content">
+            <h3 class="offers__card-title">Viagens de Fim de Ano com muita diversão</h3>
+            <p class="offers__description">
+                Encerre o seu ano com o melhor vista pagando o melhor preço com a Sorriso Hotéis. Economize 20% ou mais ao reservar o seu quarto até 5 de Janeiro de 2025.
+            </p>
+            <button class="offers__button">Confira as ofertas disponíveis</button>
+        </div>
+    </div>
+    <div  sec:authorize="hasRole('ROLE_USER')">
+        <p>usuário comum está logado</p>
+    </div>
+</section>
 </body>
 </html>
