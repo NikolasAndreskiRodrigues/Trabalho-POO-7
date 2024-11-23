@@ -22,7 +22,7 @@ public class MinNoites {
         if (datacheckOut.isBefore(datacheckIn.plusDays(1))) {
             throw new IllegalArgumentException("A reserva deve ter duração mínima de 1 dia.");
         }
-        return reservaRepository.findBydataCheckInAfterAnddataCheckOutBefore(datacheckIn, datacheckOut);
+        return reservaRepository.findByDataCheckInAfterAndDataCheckOutBefore(datacheckIn, datacheckOut);
         }
     }
 
