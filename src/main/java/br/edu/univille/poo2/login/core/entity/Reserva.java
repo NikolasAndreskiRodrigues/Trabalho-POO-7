@@ -25,7 +25,7 @@ public class Reserva {
     private double valorPorNoite;
     private boolean active;
     private int quantidadePessoas;
-
+    
     @ManyToOne
     private Hotel hotel;
 
