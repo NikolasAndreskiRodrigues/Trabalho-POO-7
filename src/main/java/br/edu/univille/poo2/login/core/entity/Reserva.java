@@ -30,7 +30,6 @@ public class Reserva {
     private Hotel hotel;
 
     @OneToMany
-    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
 }
