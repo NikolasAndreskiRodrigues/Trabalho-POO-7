@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface ReservaRepository extends JpaRepository<Reserva, Long>{
     List<Reserva> findByDataCheckInAfterAndDataCheckOutBefore(LocalDate dataCheckIn, LocalDate dataCheckOut);
-
+    List<Reserva> findByDataCheckInAfter(LocalDate limiteCancelamento);
 }

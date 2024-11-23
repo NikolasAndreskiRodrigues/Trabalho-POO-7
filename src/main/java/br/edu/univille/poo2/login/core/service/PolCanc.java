@@ -1,28 +1,33 @@
 package br.edu.univille.poo2.login.core.service;
+import br.edu.univille.poo2.login.core.entity.Reserva;
+import br.edu.univille.poo2.login.core.repository.ReservaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
+import java.util.List;
 
+@Service
 public class PolCanc {
+    @Autowired
+    private ReservaRepository reservaRepository;
 
-    private LocalDate dataCheckIn;
-    private LocalDate dataCheckOut;
-    private static final int MIN_NIGHTS = 1;
-    private static final int DIAS_PARA_CANCELAMENTO_GRATIS = 7; // 7 dias para cancelamento sem taxa
-    private double precoPorNoite = 200.00;
+    public boolean podeCancelar(Long reservaId) {
+        // Obtém a reserva pelo ID
+        Reserva reserva = reservaRepository.findById(reservaId)
+                .orElseThrow(() -> new IllegalArgumentException("Reserva não encontrada"));
 
-    public double calcularValorTotal() {
-        long numNoites = ChronoUnit.DAYS.between(dataCheckIn, dataCheckOut);
-        double valorTotal = numNoites * precoPorNoite;
+        // Calcula o limite para cancelamento
+        LocalDate limiteCancelamento = LocalDate.now().plusDays(7);
 
-        return valorTotal;
+        // Verifica se a data de check-in permite cancelamento
+        return reserva.getDataCheckIn().isAfter(limiteCancelamento);
     }
 
-    public boolean verificarPoliticaCancelamento(LocalDate dataCancelamento) {
-        long diasAntesCheckIn = ChronoUnit.DAYS.between(dataCancelamento, dataCheckIn);
-        if (diasAntesCheckIn < DIAS_PARA_CANCELAMENTO_GRATIS) {
-            System.out.println("Cancelamento fora do prazo. Cobrança de 1 noite.");
-            return false;
-        }
-        return true;
+    public List<Reserva> listarReservasCancelaveis() {
+        // Calcula o limite para cancelamento
+        LocalDate limiteCancelamento = LocalDate.now().plusDays(7);
+
+        // Busca reservas que podem ser canceladas
+        return reservaRepository.findByDataCheckInAfter(limiteCancelamento);
     }
 }

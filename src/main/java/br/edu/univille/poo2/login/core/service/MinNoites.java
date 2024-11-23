@@ -10,11 +10,6 @@ import java.util.List;
 @Service
 public class MinNoites {
 
-    /*@Autowired
-    private LocalDate dataCheckIn;
-    @Autowired
-    private LocalDate dataCheckOut;*/
-
     @Autowired
     private ReservaRepository reservaRepository;
 
