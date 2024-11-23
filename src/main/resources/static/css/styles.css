@@ -200,11 +200,12 @@ body {
 .header__logo {
   font-size: 1.5rem;
   font-weight: bold;
+  white-space: nowrap;
 }
 
 .header__language {
   display: flex;
-  align-items: center;
+  margin-left: 65%;
 }
 
 .header__flag {
@@ -367,8 +368,8 @@ body {
 }
 
 .perfil-imagem {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border: 2px solid white;
   border-radius: 50%;
   overflow: hidden;
@@ -386,19 +387,25 @@ body {
 }
 
 .botao-deslogar {
-  background-color: #ffffff; /* Cor de fundo do botão */
-  color: #f27842; /* Cor do texto do botão */
-  border: 2px solid #f27842; /* Borda laranja */
-  border-radius: 5px; /* Arredonda os cantos */
-  padding: 5px 15px; /* Espaçamento interno */
-  cursor: pointer; /* Mostra o cursor de "mão" */
-  font-size: 14px; /* Tamanho da fonte */
+  color: white;
+  border-radius: 5px;
+  padding: 5px 15px;
+  cursor: pointer;
+  font-size: 14px;
   font-weight: bold;
-  transition: 0.3s; /* Suaviza o hover */
+  transition: 0.3s;
+  text-decoration: none
 }
 
-.botao-deslogar:hover {
-  background-color: #f27842; /* Cor de fundo ao passar o mouse */
-  color: white; /* Cor do texto ao passar o mouse */
+.btn-relatorio {
+    display: center;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
+
 

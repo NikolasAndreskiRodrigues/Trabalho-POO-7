@@ -28,6 +28,9 @@
                 </div>
             </div>
         </header>
+        <div  sec:authorize="hasRole('ROLE_ADMIN')">
+            <a th:href="@{/login}" class="btn-relatorio">Admin Painel</a>
+        </div>
         <div class="banner__space">
             <h1 class="banner__title">Encontre sua próxima estadia com alegria!</h1>
             <p class="banner__subtitle">Ofertas econômicas ou luxuosas no precinho para deixar você sorrindo.</p>
@@ -54,25 +57,6 @@
             <button class="offers__button">Confira as ofertas disponíveis</button>
         </div>
     </div>
-
-    <h1>Home</h1>
-    <p>Área restrita para usuários logados. </p>
-    <p>Bem vindo: <span sec:authentication="name"></span></p>
-
-    <ol>
-        <li><a  th:href="@{/logout}">Deslogar</a></li>
-    </ol>
-    <div sec:authorize="isAuthenticated()">
-        Conteudo que somente é mostrado para usuários logados.
-    </div>
-
-    <div  sec:authorize="hasRole('ROLE_ADMIN')">
-        <p>usuário administrador está logado</p>
-    </div>
-    <div  sec:authorize="hasRole('ROLE_MANAGER')">
-        <p>usuário gerente está logado</p>
-    </div>
-
     <div  sec:authorize="hasRole('ROLE_USER')">
         <p>usuário comum está logado</p>
     </div>
