@@ -54,6 +54,12 @@ public class SecurityConfiguration {
                                 .requestMatchers("/").permitAll()
                                 .requestMatchers("/register").permitAll()
                                 .requestMatchers("/login").permitAll()
+                                .requestMatchers("/a/admin").hasAuthority("ROLE_ADMIN")
+                                .requestMatchers("/u/confirmamento").authenticated()
+                                .requestMatchers("/u/hotel").authenticated()
+                                .requestMatchers("/u/pagamento").authenticated()
+                                .requestMatchers("/u/pesquisa").authenticated()
+                                .requestMatchers("/u/reserva").authenticated()
                                 .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .formLogin(form -> form

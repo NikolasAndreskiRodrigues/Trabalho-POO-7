@@ -13,6 +13,6 @@ public class PagamentoController {
 
     @GetMapping
     public ModelAndView index(){
-        return new ModelAndView("pagemento/index");
+        return new ModelAndView("pagamento/index");
     }
 }
