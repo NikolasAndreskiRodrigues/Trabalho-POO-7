@@ -7,5 +7,5 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface ReservaRepository extends JpaRepository<Reserva, Long>{
-    List<Reserva> findByCheckInAfterAndCheckOutBefore(LocalDate checkIn, LocalDate checkOut);
+    List<Reserva> findBydataCheckInAfterAnddataCheckOutBefore(LocalDate dataCheckIn, LocalDate datacheckOut);
 }

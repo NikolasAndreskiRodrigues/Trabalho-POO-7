@@ -18,11 +18,11 @@ public class MinNoites {
     @Autowired
     private ReservaRepository reservaRepository;
 
-    public List<Reserva> buscarReservas(LocalDate checkIn, LocalDate checkOut) {
-        if (checkOut.isBefore(checkIn.plusDays(1))) {
+    public List<Reserva> buscarReservas(LocalDate datacheckIn, LocalDate datacheckOut) {
+        if (datacheckOut.isBefore(datacheckIn.plusDays(1))) {
             throw new IllegalArgumentException("A reserva deve ter duração mínima de 1 dia.");
         }
-        return reservaRepository.findByCheckInAfterAndCheckOutBefore(checkIn, checkOut);
+        return reservaRepository.findBydataCheckInAfterAnddataCheckOutBefore(datacheckIn, datacheckOut);
         }
     }
 
