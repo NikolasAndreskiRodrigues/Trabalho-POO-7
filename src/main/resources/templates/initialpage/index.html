@@ -17,8 +17,8 @@
                     <span class="header__currency">BRL</span>
                 </div>
                 <div class="header__auth-buttons">
-                    <button class="button button--register">Cadastre-se</button>
-                    <button class="button button--login">Login</button>
+                    <a class="button button--register" th:href="@{/register}">Cadastre-se</a>
+                    <a class="button button--login" th:href="@{/login}">Login</a>
                 </div>
             </div>
         </header>
@@ -35,7 +35,6 @@
     </div>
 </section>
 
-<!-- Seção de Ofertas -->
 <section class="offers">
     <h2 class="offers__title">Ofertas</h2>
     <p class="offers__subtitle">Promoções e Ofertas especiais para você</p>
