@@ -29,4 +29,11 @@ public class Reserva {
     @ManyToOne
     private Hotel hotel;
 
+<<<<<<< HEAD
+=======
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+>>>>>>> parent of 128d794 (Revert ".")
 }

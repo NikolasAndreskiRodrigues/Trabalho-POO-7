@@ -1,5 +1,5 @@
 package br.edu.univille.poo2.login.core.entity;
-
+import java.util.List;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,4 +32,12 @@ public class User {
 
     @OneToOne
     private UserRole role;
+<<<<<<< HEAD
 }
+=======
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reserva> reservas;
+
+}
+>>>>>>> parent of 128d794 (Revert ".")
