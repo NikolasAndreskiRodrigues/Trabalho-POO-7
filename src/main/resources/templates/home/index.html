@@ -22,7 +22,7 @@
                         <img src="/img/ImgUser.png" alt="Perfil" />
                     </div>
                     <div class="perfil-texto">
-                        <span>Perfil</span>
+                        <span sec:authentication="name"></span>
                     </div>
                     <a class="botao-deslogar" th:href="@{/logout}">Deslogar</a>
                 </div>
