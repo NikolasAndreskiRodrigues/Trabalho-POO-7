@@ -38,5 +38,4 @@ public class LoginServico implements UserDetailsService {
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<UserRole> roles){
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getCode())).collect(Collectors.toList());
     }
-
 }

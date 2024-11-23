@@ -1,29 +1,33 @@
 package br.edu.univille.poo2.login.core.service;
+import br.edu.univille.poo2.login.core.entity.Reserva;
+import br.edu.univille.poo2.login.core.repository.ReservaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
+import java.util.List;
 
+@Service
 public class CalcValorTotal {
 
-    private LocalDate dataCheckIn;
-    private LocalDate dataCheckOut;
-    private double precoPorNoite = 200.00;  // Preço base por noite (para até 2 pessoas)
-    private int numeroDePessoas;  // Número de pessoas na reserva
-    private static final int MIN_NIGHTS = 1; // Mínimo de noites para a reserva
+    @Autowired
+    private ReservaRepository reservaRepository;
 
-    public CalcValorTotal(LocalDate dataCheckIn, LocalDate dataCheckOut, int numeroDePessoas) {
-        this.dataCheckIn = dataCheckIn;
-        this.dataCheckOut = dataCheckOut;
-        this.numeroDePessoas = numeroDePessoas;
-    }
+    public double calcularValorTotal(Long reservaId) {
+        // Busca a reserva pelo ID
+        Reserva reserva = reservaRepository.findById(reservaId)
+                .orElseThrow(() -> new IllegalArgumentException("Reserva não encontrada"));
 
-    public boolean verificarDisponibilidade() {
-        long numNoites = ChronoUnit.DAYS.between(dataCheckIn, dataCheckOut);
-        return numNoites >= MIN_NIGHTS;
-    }
+        // Calcula a quantidade de dias
+        long quantidadeDias = java.time.temporal.ChronoUnit.DAYS.between(
+                reserva.getDataCheckIn(), reserva.getDataCheckOut());
 
-    public double calcularValorTotal() {
-        long numNoites = ChronoUnit.DAYS.between(dataCheckIn, dataCheckOut);
-        double valorTotal = numNoites * precoPorNoite * numeroDePessoas;
+        if (quantidadeDias <= 0) {
+            throw new IllegalArgumentException("A reserva deve ter pelo menos 1 dia.");
+        }
+
+        // Calcula o valor total
+        double valorTotal = quantidadeDias * reserva.getValorPorNoite() * reserva.getQuantidadePessoas();
+
         return valorTotal;
     }
 }
