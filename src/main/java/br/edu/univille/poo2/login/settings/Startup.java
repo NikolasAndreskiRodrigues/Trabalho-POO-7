@@ -19,37 +19,29 @@ public class Startup {
     private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
 
-
     @EventListener
-    public void onApplicationEvent(ContextRefreshedEvent event){
-        if(userRoleRepository.findAll().isEmpty()){
-            UserRole userRole = new UserRole();
-            userRole.setCode("ROLE_ADMIN");
-            userRole.setName("Administrador de Sistema");
-            userRoleRepository.save(userRole);
-            userRole = new UserRole();
-            userRole.setCode("ROLE_USER");
-            userRole.setName("Usuário");
-            userRoleRepository.save(userRole);
+    public void onApplicationEvent(ContextRefreshedEvent event) {
+        if (userRoleRepository.findAll().isEmpty()) {
+            UserRole adminRole = new UserRole();
+            adminRole.setCode("ROLE_ADMIN");
+            adminRole.setName("Administrador de Sistema");
+            userRoleRepository.save(adminRole);
         }
-        if(userRepository.findAll().isEmpty()){
-            var roleAdmin = userRoleRepository.findAll().stream().filter(userRole -> userRole.getCode().equals("ROLE_ADMIN")).findFirst();
-            User user = new User();
-            user.setUsername("admin");
-            user.setActive(true);
-            user.setName("Administrador de Sistema");
-            user.setRole(roleAdmin.get());
-            user.setPassword(bCryptPasswordEncoder.encode("senha123"));
-            userRepository.save(user);
-            var roleUser = userRoleRepository.findAll().stream().filter(userRole -> userRole.getCode().equals("ROLE_USER")).findFirst();
-            user = new User();
-            user.setUsername("user");
-            user.setActive(true);
-            user.setName("teste");
-            user.setRole(roleUser.get());
-            user.setPassword(bCryptPasswordEncoder.encode("senha123"));
-            userRepository.save(user);
+
+        if (userRepository.findAll().isEmpty()) {
+            var roleAdmin = userRoleRepository.findAll().stream()
+                    .filter(userRole -> userRole.getCode().equals("ROLE_ADMIN"))
+                    .findFirst();
+
+            if (roleAdmin.isPresent()) {
+                User admin = new User();
+                admin.setUsername("admin");
+                admin.setActive(true);
+                admin.setName("Administrador de Sistema");
+                admin.setRole(roleAdmin.get());
+                admin.setPassword(bCryptPasswordEncoder.encode("senha123"));
+                userRepository.save(admin);
+            }
         }
     }
-
 }
