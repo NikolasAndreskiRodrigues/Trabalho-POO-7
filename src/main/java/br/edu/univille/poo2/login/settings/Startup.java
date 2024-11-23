@@ -31,17 +31,13 @@ public class Startup {
             userRole.setCode("ROLE_USER");
             userRole.setName("Usuário");
             userRoleRepository.save(userRole);
-            userRole = new UserRole();
-            userRole.setCode("ROLE_MANAGER");
-            userRole.setName("Gerente");
-            userRoleRepository.save(userRole);
         }
         if(userRepository.findAll().isEmpty()){
             var roleAdmin = userRoleRepository.findAll().stream().filter(userRole -> userRole.getCode().equals("ROLE_ADMIN")).findFirst();
             User user = new User();
             user.setUsername("admin");
             user.setActive(true);
-            user.setName("Leanderson André");
+            user.setName("Administrador de Sistema");
             user.setRole(roleAdmin.get());
             user.setPassword(bCryptPasswordEncoder.encode("senha123"));
             userRepository.save(user);
@@ -49,17 +45,8 @@ public class Startup {
             user = new User();
             user.setUsername("user");
             user.setActive(true);
-            user.setName("Leanderson André");
+            user.setName("teste");
             user.setRole(roleUser.get());
-            user.setPassword(bCryptPasswordEncoder.encode("senha123"));
-            userRepository.save(user);
-
-            var roleManager = userRoleRepository.findAll().stream().filter(userRole -> userRole.getCode().equals("ROLE_MANAGER")).findFirst();
-            user = new User();
-            user.setUsername("manager");
-            user.setActive(true);
-            user.setName("Leanderson André");
-            user.setRole(roleManager.get());
             user.setPassword(bCryptPasswordEncoder.encode("senha123"));
             userRepository.save(user);
         }
