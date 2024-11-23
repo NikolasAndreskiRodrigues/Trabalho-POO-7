@@ -356,3 +356,49 @@ body {
   padding: 100px;
 }
 
+.perfil-container {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 20px;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+.perfil-imagem {
+  width: 50px;
+  height: 50px;
+  border: 2px solid white;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.perfil-imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.perfil-texto span {
+  font-weight: bold;
+}
+
+.botao-deslogar {
+  background-color: #ffffff; /* Cor de fundo do botão */
+  color: #f27842; /* Cor do texto do botão */
+  border: 2px solid #f27842; /* Borda laranja */
+  border-radius: 5px; /* Arredonda os cantos */
+  padding: 5px 15px; /* Espaçamento interno */
+  cursor: pointer; /* Mostra o cursor de "mão" */
+  font-size: 14px; /* Tamanho da fonte */
+  font-weight: bold;
+  transition: 0.3s; /* Suaviza o hover */
+}
+
+.botao-deslogar:hover {
+  background-color: #f27842; /* Cor de fundo ao passar o mouse */
+  color: white; /* Cor do texto ao passar o mouse */
+}
+
