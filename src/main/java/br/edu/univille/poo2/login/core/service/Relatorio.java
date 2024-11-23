@@ -34,7 +34,7 @@ public class Relatorio {
             throw new IllegalArgumentException("A data inicial não pode ser depois da data final.");
         }
 
-        return reservaRepository.findReservasByUserAndDataCheckInAndDataCheckOut(userId, dataCheckIn, dataCheckOut);
+        return reservaRepository.findByUserIdAndDataCheckInBetween(userId, dataCheckIn, dataCheckOut);
     }
 
     // Relatório por vezes reservadas em cada hotel
