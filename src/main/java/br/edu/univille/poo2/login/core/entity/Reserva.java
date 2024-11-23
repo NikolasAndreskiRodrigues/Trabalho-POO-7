@@ -30,10 +30,13 @@ public class Reserva {
     private Hotel hotel;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
 >>>>>>> parent of 128d794 (Revert ".")
+=======
+>>>>>>> parent of da06ef9 (Relacionamento Reserva com usuário)
 }
