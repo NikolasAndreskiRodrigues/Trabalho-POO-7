@@ -7,7 +7,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -23,8 +22,9 @@ public class Reserva {
     private LocalDate dataCheckIn;
     private LocalDate dataCheckOut;
     private int quantidadeHospedes;
-    private float valorTotal;
+    private double valorPorNoite;
     private boolean active;
+    private int quantidadePessoas;
 
     @ManyToOne
     private Hotel hotel;
