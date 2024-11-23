@@ -1,3 +1,4 @@
+/*
 package br.edu.univille.poo2.login.core.service;
 import br.edu.univille.poo2.login.core.entity.Reserva;
 import br.edu.univille.poo2.login.core.repository.PaisRepository;
@@ -34,7 +35,7 @@ public class Relatorio {
             throw new IllegalArgumentException("A data inicial não pode ser depois da data final.");
         }
 
-        return reservaRepository.findReservasByUserAndDataCheckInAndDataCheckOut(userId, dataCheckIn, dataCheckOut);
+        return reservaRepository.findReservasByUserAndData(userId, dataCheckIn, dataCheckOut);
     }
 
     // Relatório por vezes reservadas em cada hotel
@@ -51,3 +52,4 @@ public class Relatorio {
         return relatorio;
     }
 }
+*/

@@ -28,4 +28,5 @@ public class Reserva {
     
     @ManyToOne
     private Hotel hotel;
+
 }
