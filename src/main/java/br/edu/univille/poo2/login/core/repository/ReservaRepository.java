@@ -13,5 +13,5 @@ public interface ReservaRepository extends JpaRepository<Reserva, Long>{
     List<Reserva> findByDataCheckInGreaterThanEqualAndDataCheckOutLessThanEqual(LocalDate dataCheckIn, LocalDate dataCheckOut);
     List<Reserva> findReservasByUserAndPais(Long userId, Long paisId);
     List<Object[]> findReservasPorHotel(@Param("userId") Long userId);
-    List<Reserva> findReservasByUserAndDataCheckInAndDataCheckOut(Long userId, LocalDate dataCheckIn, LocalDate dataCheckOut);
+    List<Reserva> findReservasByUserAndData(Long userId, LocalDate dataCheckIn, LocalDate dataCheckOut);
 }
