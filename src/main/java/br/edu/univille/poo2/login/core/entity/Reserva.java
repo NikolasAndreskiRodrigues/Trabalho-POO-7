@@ -29,4 +29,7 @@ public class Reserva {
     @ManyToOne
     private Hotel hotel;
 
+    @OneToMany
+    private User user;
+
 }
