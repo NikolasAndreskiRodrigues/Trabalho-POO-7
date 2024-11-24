@@ -11,7 +11,7 @@
     <div class="banner__content">
         <header class="header">
             <div class="header__container">
-                <div class="header__logo">Sorriso Hotéis</div>
+                <a th:href="@{/}" class="header__logo">Sorriso Hotéis</a>
                 <div class="header__language">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg" alt="Bandeira do Brasil" class="header__flag">
                     <span class="header__currency">BRL</span>
@@ -29,7 +29,7 @@
             <input type="text" placeholder="Para onde você vai?" class="banner__input">
             <input type="text" placeholder="Data de check-in - Data de Check-out" class="banner__input">
             <input type="text" placeholder="2 adultos · 0 criança · 1 cômodo" class="banner__input">
-            <button class="banner__button">PESQUISAR</button>
+            <a th:href="@{/u/pesquisa}" class="banner__button" >PESQUISAR</a>
         </div>
         </div>
     </div>
@@ -39,13 +39,13 @@
     <h2 class="offers__title">Ofertas</h2>
     <p class="offers__subtitle">Promoções e Ofertas especiais para você</p>
     <div class="offers__card">
-        <img src="https://via.placeholder.com/150" alt="Viagem" class="offers__image">
+        <img src="https://www.kayak.com.br/rimg/himg/f2/50/1a/ice-58543-115086819-190200.jpg?width=968&height=607&crop=true" alt="Viagem" class="offers__image">
         <div class="offers__content">
             <h3 class="offers__card-title">Viagens de Fim de Ano com muita diversão</h3>
             <p class="offers__description">
                 Encerre o seu ano com o melhor vista pagando o melhor preço com a Sorriso Hotéis. Economize 20% ou mais ao reservar o seu quarto até 5 de Janeiro de 2025.
             </p>
-            <button class="offers__button">Confira as ofertas disponíveis</button>
+            <a class="offers__button" th:href="@{/u/pesquisa}">Confira as ofertas disponíveis</a>
         </div>
     </div>
 </section>

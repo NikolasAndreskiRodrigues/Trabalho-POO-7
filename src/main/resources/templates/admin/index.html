@@ -6,10 +6,28 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<div sec:authorize="isAuthenticated()">
-</div>
 <div  sec:authorize="hasRole('ROLE_ADMIN')">
     </div>
-<span tamo construindo </span>
+    <section class="banner">
+        <div class="banner__overlay"></div>
+        <div class="banner__content">
+            <header class="header">
+                <div class="header__container">
+                    <a th:href="@{/u/home}" class="header__logo">Sorriso Hotéis</a>
+                    <div class="header__language">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg" alt="Bandeira do Brasil" class="header__flag">
+                        <span class="header__currency">BRL</span>
+                    </div>
+                    <div class="perfil-container">
+                        <div class="perfil-imagem">
+                            <img src="/img/ImgUser.png" alt="Perfil" />
+                        </div>
+                        <div class="perfil-texto">
+                            <span sec:authentication="name"></span>
+                        </div>
+                        <a class="botao-deslogar" th:href="@{/logout}">Deslogar</a>
+                    </div>
+                </div>
+            </header>
 </body>
 </html>
