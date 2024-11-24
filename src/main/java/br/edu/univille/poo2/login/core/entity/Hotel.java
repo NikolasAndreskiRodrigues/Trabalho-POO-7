@@ -17,17 +17,19 @@ public class Hotel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
+
     private String name;
     private String localizacao;
-    private float avaliacao;
-    private String fotos;
     private String descricao;
-    private float preco;
-    private boolean active;
+    private float valorPorDia;
+
+    @ElementCollection
+    private List<String> fotos; // Lista de caminhos de fotos
 
     @ManyToOne
     private Cidade cidade;
 
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Avaliacao> avaliacoes;
 }
