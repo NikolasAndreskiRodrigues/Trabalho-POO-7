@@ -28,54 +28,49 @@ public class CadastroController {
     @Autowired
     private AvaliacaoRepository avaliacaoRepository;
 
-    // Diretório onde as imagens serão armazenadas
-    private static final String UPLOAD_DIR = "uploads/";
+
+    /*private static final String UPLOAD_DIR = "uploads/";*/
 
     @GetMapping
     public ModelAndView index() {
         ModelAndView mv = new ModelAndView("cadastro/index");
-        mv.addObject("hotel", new Hotel()); // Inicializa um novo hotel
+        mv.addObject("hotel", new Hotel());
         return mv;
     }
 
     @PostMapping
-    public String cadastrar(@ModelAttribute Hotel hotel, @RequestParam("fotos") MultipartFile[] fotos) {
-        // Criar diretório de uploads caso não exista
+    public String cadastrar(@ModelAttribute Hotel hotel /*@RequestParam("fotos") MultipartFile[] fotos*/) {
+        /*
         File uploadDir = new File(UPLOAD_DIR);
         if (!uploadDir.exists()) {
             uploadDir.mkdir();
         }
 
-        // Lista para armazenar os caminhos das fotos
         List<String> fotosPaths = new ArrayList<>();
         for (MultipartFile foto : fotos) {
             if (!foto.isEmpty()) {
                 try {
-                    // Salva o arquivo no diretório especificado
                     Path path = Path.of(UPLOAD_DIR + foto.getOriginalFilename());
                     Files.copy(foto.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 
-                    // Adiciona o caminho do arquivo à lista de fotos
                     fotosPaths.add(path.toString());
                 } catch (IOException e) {
-                    e.printStackTrace(); // Lide com o erro de upload de arquivo
+                    e.printStackTrace();
                 }
             }
         }
 
-        // Atribui as fotos ao hotel
         hotel.setFotos(fotosPaths);
+        */
 
-        // Salva o hotel
         hotelRepository.save(hotel);
 
-        // Salva as avaliações (se houverem)
         for (Avaliacao avaliacao : hotel.getAvaliacoes()) {
-            avaliacao.setHotel(hotel); // Associa a avaliação ao hotel
-            avaliacaoRepository.save(avaliacao); // Salva a avaliação
+            avaliacao.setHotel(hotel);
+            avaliacaoRepository.save(avaliacao);
         }
 
-        return "redirect:/a/admin"; // Redireciona para a página principal do admin
+        return "redirect:/a/admin";
     }
 
 }

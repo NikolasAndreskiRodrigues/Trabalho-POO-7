@@ -24,11 +24,13 @@ public class Hotel {
     private String descricao;
     private float valorPorDia;
 
+    /*
     @ElementCollection
-    private List<String> fotos; // Lista de caminhos de fotos
+    private List<String> fotos; */
 
     @ManyToOne
     private Cidade cidade;
+
 
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Avaliacao> avaliacoes;

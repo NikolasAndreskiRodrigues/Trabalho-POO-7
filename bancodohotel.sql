@@ -84,7 +84,7 @@ CREATE TABLE `hotel` (
   `fotos` varchar(255) DEFAULT NULL,
   `localizacao` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `preco` float NOT NULL,
+  `valorPorDia` float NOT NULL,
   `cidade_name` varchar(255) DEFAULT NULL,
   `cidade_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
