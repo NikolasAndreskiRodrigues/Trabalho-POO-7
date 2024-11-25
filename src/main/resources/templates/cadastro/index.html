@@ -28,8 +28,11 @@
           <a class="botao-deslogar" th:href="@{/logout}">Deslogar</a>
         </div>
       </div>
-      <form action="#" th:action="@{/a/admin/cadastrar}" th:object="${hotel}" method="post" enctype="multipart/form-data">
-        <!-- Campos do hotel -->
+      <div class="espaco"></div>
+      <div class="cadastro-container">
+        <h2 class="cadastro-title">Cadastre um hotel</h2>
+        <form class="signup-form" action="#" th:action="@{/a/admin/cadastrar}" th:object="${hotel}" method="post" enctype="multipart/form-data">
+          <div class="cadastro-group">
         <label for="name">Nome do Hotel:</label>
         <input type="text" id="name" th:field="*{name}" required/>
 
@@ -54,6 +57,7 @@
         <input type="file" id="fotos" name="fotos" multiple="multiple"/>-->
 
         <button type="submit">Cadastrar</button>
+            </div>
       </form>
     </header>
 </body>
