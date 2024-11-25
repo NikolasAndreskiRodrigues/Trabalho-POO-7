@@ -18,6 +18,34 @@ USE `bancodohotel`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `avaliacao`
+--
+
+DROP TABLE IF EXISTS `avaliacao`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `avaliacao` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `comentario` varchar(255) NOT NULL,
+  `nota` int NOT NULL,
+  `hotel_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `hotel_id` (`hotel_id`),
+  CONSTRAINT `avaliacao_ibfk_1` FOREIGN KEY (`hotel_id`) REFERENCES `hotel` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `avaliacao`
+--
+
+LOCK TABLES `avaliacao` WRITE;
+/*!40000 ALTER TABLE `avaliacao` DISABLE KEYS */;
+INSERT INTO `avaliacao` VALUES (1,'teste',5,1),(2,'hoteel',10,2);
+/*!40000 ALTER TABLE `avaliacao` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `cidade`
 --
 
@@ -78,19 +106,15 @@ DROP TABLE IF EXISTS `hotel`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `hotel` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `active` bit(1) NOT NULL,
-  `avaliacao` float NOT NULL,
   `descricao` varchar(255) DEFAULT NULL,
-  `fotos` varchar(255) DEFAULT NULL,
   `localizacao` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `valorPorDia` float NOT NULL,
-  `cidade_name` varchar(255) DEFAULT NULL,
   `cidade_id` bigint DEFAULT NULL,
+  `valor_por_dia` float NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FKqi5vy3k0knh5bw98ver15s26v` (`cidade_id`),
   CONSTRAINT `FKqi5vy3k0knh5bw98ver15s26v` FOREIGN KEY (`cidade_id`) REFERENCES `cidade` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +123,32 @@ CREATE TABLE `hotel` (
 
 LOCK TABLES `hotel` WRITE;
 /*!40000 ALTER TABLE `hotel` DISABLE KEYS */;
+INSERT INTO `hotel` VALUES (1,'teste','teste','teste',NULL,900),(2,'hotel','hotel','hotel',NULL,1000);
 /*!40000 ALTER TABLE `hotel` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `hotel_fotos`
+--
+
+DROP TABLE IF EXISTS `hotel_fotos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `hotel_fotos` (
+  `hotel_id` bigint NOT NULL,
+  `fotos` varchar(255) DEFAULT NULL,
+  KEY `FKscsmg3804oiqgflhy2utjpcqu` (`hotel_id`),
+  CONSTRAINT `FKscsmg3804oiqgflhy2utjpcqu` FOREIGN KEY (`hotel_id`) REFERENCES `hotel` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `hotel_fotos`
+--
+
+LOCK TABLES `hotel_fotos` WRITE;
+/*!40000 ALTER TABLE `hotel_fotos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `hotel_fotos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -135,14 +184,22 @@ DROP TABLE IF EXISTS `reserva`;
 CREATE TABLE `reserva` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `active` bit(1) NOT NULL,
-  `data_check_in` datetime(6) DEFAULT NULL,
-  `data_check_out` datetime(6) DEFAULT NULL,
+  `data_check_in` date DEFAULT NULL,
+  `data_check_out` date DEFAULT NULL,
   `quantidade_hospedes` int NOT NULL,
   `valor_total` float NOT NULL,
   `hotel_id` bigint DEFAULT NULL,
+  `quantidade_pessoas` int NOT NULL,
+  `valor_por_noite` double NOT NULL,
+  `user_id` bigint DEFAULT NULL,
+  `pais_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKgve13jsoas3vq4xoo73lur8kv` (`hotel_id`),
-  CONSTRAINT `FKgve13jsoas3vq4xoo73lur8kv` FOREIGN KEY (`hotel_id`) REFERENCES `hotel` (`id`)
+  KEY `FKtc6j743xmwfnwmh4ppgmt1x8a` (`user_id`),
+  KEY `FKcpiic3xd6u32tgtg27asbd1a` (`pais_id`),
+  CONSTRAINT `FKcpiic3xd6u32tgtg27asbd1a` FOREIGN KEY (`pais_id`) REFERENCES `pais` (`id`),
+  CONSTRAINT `FKgve13jsoas3vq4xoo73lur8kv` FOREIGN KEY (`hotel_id`) REFERENCES `hotel` (`id`),
+  CONSTRAINT `FKtc6j743xmwfnwmh4ppgmt1x8a` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -165,15 +222,17 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `active` bit(1) NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `username` varchar(255) DEFAULT NULL,
+  `username` varchar(255) NOT NULL,
   `role_id` bigint DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UKqleu8ddawkdltal07p8e6hgva` (`role_id`),
+  UNIQUE KEY `unique_email` (`email`),
+  UNIQUE KEY `unique_username` (`username`),
+  KEY `FKn4pb12f3y8ktduy8fnc2xlln1` (`role_id`),
   CONSTRAINT `FKn4pb12f3y8ktduy8fnc2xlln1` FOREIGN KEY (`role_id`) REFERENCES `user_role` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -182,7 +241,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,_binary '',NULL,'Leanderson André','$2a$10$Q7ufgr3oGGG8TLw7IOQMo.njqh9X/yXGScjrW/xPcPKdTxQA2mTDa','admin',1),(2,_binary '',NULL,'Leanderson André','$2a$10$bjcUICvXtsfCxVNVdEyJZudcEdFAO819XZ6OxbOqo0FTjvgD69tXO','user',2),(3,_binary '',NULL,'Leanderson André','$2a$10$TkaWRDCr8KwhTuscEHk3z.QwMSfU7S2SOkBU4lxhp4yBI5SpeDf0e','manager',3);
+INSERT INTO `user` VALUES (1,_binary '','Administrador de Sistema','$2a$10$BYhvnm6t8qvAwIYAmEMCTesda8SFSHjThpgWO2fCf.QyRgHnPjam.','Admin',1,'admin@gmail.com'),(2,_binary '','teste','$2a$10$T8qymvzlSC0KPDFqh8tpHu2BtIjbV/blitRYP.P7wjkWTMc2XKLoW','User',2,'teste@gmail.com'),(19,_binary '','Nikolas teste','$2a$10$BlmzqvG7HsNMIpY6LGVPs.ZTgcnt6wgMt34IrpmK/92mrf9mdkhJu','Nikolas',1,'nikolasteste@gmail.com'),(20,_binary '','Mateus teste','$2a$10$.XkoYwmm1q.FSIHJDMpcI.lcR54157gJ4fqg2nhYZj1AMKW388jL.','Mateus',2,'mateusteste@gmail.com');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,4 +279,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-22 19:59:00
+-- Dump completed on 2024-11-25  0:07:50
