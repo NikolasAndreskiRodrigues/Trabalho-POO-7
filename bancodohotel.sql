@@ -32,7 +32,7 @@ CREATE TABLE `avaliacao` (
   PRIMARY KEY (`id`),
   KEY `hotel_id` (`hotel_id`),
   CONSTRAINT `avaliacao_ibfk_1` FOREIGN KEY (`hotel_id`) REFERENCES `hotel` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `avaliacao` (
 
 LOCK TABLES `avaliacao` WRITE;
 /*!40000 ALTER TABLE `avaliacao` DISABLE KEYS */;
-INSERT INTO `avaliacao` VALUES (1,'teste',5,1),(2,'hoteel',10,2);
+INSERT INTO `avaliacao` VALUES (1,'teste',5,1),(2,'hoteel',10,2),(3,'joinville é top',10,3);
 /*!40000 ALTER TABLE `avaliacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +114,7 @@ CREATE TABLE `hotel` (
   PRIMARY KEY (`id`),
   KEY `FKqi5vy3k0knh5bw98ver15s26v` (`cidade_id`),
   CONSTRAINT `FKqi5vy3k0knh5bw98ver15s26v` FOREIGN KEY (`cidade_id`) REFERENCES `cidade` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,7 +123,7 @@ CREATE TABLE `hotel` (
 
 LOCK TABLES `hotel` WRITE;
 /*!40000 ALTER TABLE `hotel` DISABLE KEYS */;
-INSERT INTO `hotel` VALUES (1,'teste','teste','teste',NULL,900),(2,'hotel','hotel','hotel',NULL,1000);
+INSERT INTO `hotel` VALUES (1,'teste','teste','teste',NULL,900),(2,'hotel','hotel','hotel',NULL,1000),(3,'joinville','hotel em joinville','Hotel joinville',NULL,900);
 /*!40000 ALTER TABLE `hotel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -232,7 +232,7 @@ CREATE TABLE `user` (
   UNIQUE KEY `unique_username` (`username`),
   KEY `FKn4pb12f3y8ktduy8fnc2xlln1` (`role_id`),
   CONSTRAINT `FKn4pb12f3y8ktduy8fnc2xlln1` FOREIGN KEY (`role_id`) REFERENCES `user_role` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -241,7 +241,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,_binary '','Administrador de Sistema','$2a$10$BYhvnm6t8qvAwIYAmEMCTesda8SFSHjThpgWO2fCf.QyRgHnPjam.','Admin',1,'admin@gmail.com'),(2,_binary '','teste','$2a$10$T8qymvzlSC0KPDFqh8tpHu2BtIjbV/blitRYP.P7wjkWTMc2XKLoW','User',2,'teste@gmail.com'),(19,_binary '','Nikolas teste','$2a$10$BlmzqvG7HsNMIpY6LGVPs.ZTgcnt6wgMt34IrpmK/92mrf9mdkhJu','Nikolas',1,'nikolasteste@gmail.com'),(20,_binary '','Mateus teste','$2a$10$.XkoYwmm1q.FSIHJDMpcI.lcR54157gJ4fqg2nhYZj1AMKW388jL.','Mateus',2,'mateusteste@gmail.com');
+INSERT INTO `user` VALUES (1,_binary '','Administrador de Sistema','$2a$10$BYhvnm6t8qvAwIYAmEMCTesda8SFSHjThpgWO2fCf.QyRgHnPjam.','Admin',1,'admin@gmail.com'),(2,_binary '','teste','$2a$10$T8qymvzlSC0KPDFqh8tpHu2BtIjbV/blitRYP.P7wjkWTMc2XKLoW','User',2,'teste@gmail.com'),(19,_binary '','Nikolas teste','$2a$10$BlmzqvG7HsNMIpY6LGVPs.ZTgcnt6wgMt34IrpmK/92mrf9mdkhJu','Nikolas',1,'nikolasteste@gmail.com'),(20,_binary '','Mateus teste','$2a$10$.XkoYwmm1q.FSIHJDMpcI.lcR54157gJ4fqg2nhYZj1AMKW388jL.','Mateus',2,'mateusteste@gmail.com'),(21,_binary '','Leanderson','$2a$10$oO72HZIyQYJSdI/Rv8ijHOQeAVqx/6ioW1h4DnTqqkHgzumL6dkxS','lele',2,'leleteste@gmail.com');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -279,4 +279,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-25  0:07:50
+-- Dump completed on 2024-11-25 20:30:06
