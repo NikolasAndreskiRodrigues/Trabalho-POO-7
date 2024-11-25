@@ -1663,7 +1663,7 @@ body {
   border: 3px solid rgba(0,0,0,1);
 }
 .v80_125 {
-  width: 433px;
+  width: 481px;
   color: rgba(0,0,0,1);
   position: absolute;
   top: 394px;
@@ -1753,5 +1753,53 @@ body {
     width: 100%;
     height: 100%;
     background-color: rgba(255, 102, 0, 0.5);
+}
+
+.v64_14 {
+    color: rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 283px;
+    left: 1053px;
+    font-family: Inter;
+    font-weight: Extra Bold;
+    font-size: 32px;
+    opacity: 1;
+    text-align: left;
+}
+
+.v64_16 {
+    width: 616px;
+    color: rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 394px;
+    left: 1082px;
+    font-family: Inter;
+    font-weight: Light;
+    font-size: 13px;
+    opacity: 1;
+    text-align: left;
+}
+
+.v64_120 {
+    width: 352px;
+    height: 59px;
+    background: rgba(255, 255, 255, 1);
+    opacity: 1;
+    position: absolute;
+    top: 280px;
+    left: 1050px;
+    overflow: hidden;
+}
+
+
+.v64_124 {
+    width: 652px;
+    height: 59px;
+    background: rgba(255, 255, 255, 1);
+    opacity: 1;
+    position: absolute;
+    top: 390px;
+    left: 1080px;
+    overflow: hidden;
 }
 
